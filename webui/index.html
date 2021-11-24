@@ -36,6 +36,7 @@
         #menubar {
             height: 34px;
             padding-top: 2px;
+            z-index: 189;
             border-bottom: solid 5px #bcc7cb;
             background-color: #192c6e;
         }
@@ -255,11 +256,11 @@
     <nav id="menubar" role="navigation">
         <ul>
             <li id="menuStartPage">
-                <a class="MainMenuItemCaption" id="menuStartPage_TITLE" href="#"
+                <a id="menuStartPage_TITLE" href="#"
                     onclick="onClickFunction(this);">Startseite</a>
             </li>
             <li id="menuControlPage">
-                <a class="MainMenuItemCaption" id="menuControlPage_TITLE" href="#" onclick="onClickFunction(this);"
+                <a id="menuControlPage_TITLE" href="#" onclick="onClickFunction(this);"
                     aria-haspopup="true">Status und Bedienung</a>
                 <ul class="dropdown" id="menuControlPage_SUBMENU" aria-label="submenu">
                     <li id="submenuDiagramListPage"><a href="#" onclick="onClickFunction(this);"><img
@@ -287,7 +288,7 @@
                 </ul>
             </li>
             <li id="menuProgramsLinksPage">
-                <a class="MainMenuItemCaption" id="menuProgramsLinksPage_TITLE" href="#"
+                <a id="menuProgramsLinksPage_TITLE" href="#"
                     onclick="onClickFunction(this);">Programme und Verknüpfungen</a>
                 <ul class="dropdown" id="menuProgramsLinksPage_SUBMENU" aria-label="submenu">
                     <li><a id="submenuDirectLinks"><a href="#" onclick="onClickFunction(this);"><img
@@ -299,7 +300,7 @@
                 </ul>
             </li>
             <li id="menuSettingsPage">
-                <a class="MainMenuItemCaption" id="menuSettingsPage_TITLE" href="#"
+                <a id="menuSettingsPage_TITLE" href="#"
                     onclick="onClickFunction(this);">Einstellungen</a>
                 <ul class="dropdown" id="menuSettingsPage_SUBMENU" aria-label="submenu">
                     <li id="submenuUserManagement"><a href="#" onclick="onClickFunction(this);"><img
@@ -338,11 +339,11 @@
                 </ul>
             </li>
             <li class="float-right me-10" id="menuHelpPage">
-                <a class="MainMenuItemCaption" id="menuHelpPage_TITLE" href="#"
+                <a id="menuHelpPage_TITLE" href="#"
                     onclick="onClickFunction(this);">Hilfe</a>
             </li>
             <li class="float-right" id="menuNewDevicesPage">
-                <a class="MainMenuItemCaption" id="menuNewDevicesPage_TITLE" href="#"
+                <a id="menuNewDevicesPage_TITLE" href="#"
                     onclick="onClickFunction(this);">Geräte anlernen</a>
             </li>
         </ul>
