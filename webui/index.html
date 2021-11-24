@@ -48,7 +48,7 @@
             margin-right: 10px;
         }
 
-        #menubar .MainMenuItemCaption {
+        #menubar > ul > li > a {
             padding: 5px;
             border: 1px solid #000;
             border-radius: 5px;
@@ -60,7 +60,7 @@
             color: #000;
         }
 
-        #menubar a>img {
+        #menubar a > img {
             width: 16px;
             vertical-align: middle;
         }
@@ -111,7 +111,8 @@
         #menubar ul li:focus-within>ul,
         #menubar ul li ul:hover,
         #menubar ul li ul:focus {
-            display: block;
+            display: flex;
+            flex-direction: column;
             visibility: visible;
             opacity: 1;
         }
@@ -129,6 +130,124 @@
             background: #bcc7cb;
         }
     </style>
+    <style>
+        /* ------------------------------------------------------------------ */
+        /* menu order - menuControlPage */
+
+        #menuControlPage_SUBMENU #submenuDiagramListPage,
+        #btnDiagramList_container {
+            order: 4;
+        }
+
+        #menuControlPage_SUBMENU #submenuFavorites,
+        #tblStatus #btnFavs_container {
+            order: 5;
+        }
+
+        #menuControlPage_SUBMENU #submenuDevices,
+        #tblStatus #btnChns_container {
+            order: 1;
+        }
+
+        #menuControlPage_SUBMENU #submenuFunction,
+        #tblStatus #btnFunctions_container {
+            order: 3;
+        }
+
+        #menuControlPage_SUBMENU #submenuPrograms,
+        #tblStatus #btnProgs_container {
+            order: 6;
+        }
+
+        #menuControlPage_SUBMENU #submenuRooms,
+        #tblStatus #btnRooms_container {
+            order: 2;
+        }
+
+        #menuControlPage_SUBMENU #submenuSysProtocol,
+        #tblStatus #tdSysProc_container {
+            order: 8;
+        }
+
+        #menuControlPage_SUBMENU #submenuSysVar,
+        #tblStatus #btnSysVar_container {
+            order: 7;
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* menu order - menuProgramsLinksPage */
+
+        #menuProgramsLinksPage_SUBMENU #submenuDirectLinks,
+        #tblProgramsLinks #btnDirectDeviceLinks_container {
+            order: 1;
+        }
+
+        #menuProgramsLinksPage_SUBMENU #submenuProgramsLinks,
+        #tblProgramsLinks #btnCreateProgramsAndLinks_container {
+            order: 2;
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* menu order - menuSettingsPage */
+
+        #menuSettingsPage_SUBMENU #submenuUserManagement,
+        #tblSettings #btnSettingsUserAdministration_container {
+            order: 8;
+        }
+
+        #menuSettingsPage_SUBMENU #submenuCreateDiagram,
+        #tblSettings #btnSettingsDiagrams_container {
+            order: 5;
+        }
+
+        #menuSettingsPage_SUBMENU #submenuFavorites,
+        #tblSettings #btnSettingsFavorites_container {
+            order: 10;
+        }
+
+        #menuSettingsPage_SUBMENU #submenuDevices,
+        #tblSettings #btnSettingsDevices_container {
+            order: 2;
+        }
+
+        #menuSettingsPage_SUBMENU #submenuDeviceFirmwareInformation,
+        #tblSettings #submenuDeviceFirmwareInformation_container {
+            order: 7;
+        }
+
+        #menuSettingsPage_SUBMENU #submenuDeviceInbox,
+        #tblSettings #btnSettingsDeviceInBox_container {
+            order: 1;
+        }
+
+        #menuSettingsPage_SUBMENU #submenuFunction,
+        #tblSettings #btnSettingsFunctions_container {
+            order: 4;
+        }
+
+        #menuSettingsPage_SUBMENU #submenuCreateGroups,
+        #tblSettings #btnSettingsGroups_container {
+            order: 6;
+        }
+
+        #menuSettingsPage_SUBMENU #submenuRooms,
+        #tblSettings #btnSettingsRooms_container {
+            order: 3;
+        }
+
+        #menuSettingsPage_SUBMENU #submenuSysControl,
+        #tblSettings #btnSettingsSystemConfig_container {
+            order: 11;
+        }
+
+        #menuSettingsPage_SUBMENU #submenuSysVar,
+        #tblSettings #btnSettingsSysVar_container {
+            order: 9;
+        }
+
+        /* #submenuCreateTestPage { order: 12; } */
+        /* #submenuDeviceFirmware { order: 13; } */
+    </style>
 </head>
 
 <body>
@@ -137,98 +256,102 @@
         <ul>
             <li id="menuStartPage">
                 <a class="MainMenuItemCaption" id="menuStartPage_TITLE" href="#"
-                    onclick="MyFunction(event);">Startseite</a>
+                    onclick="onClickFunction(this);">Startseite</a>
             </li>
             <li id="menuControlPage">
-                <a class="MainMenuItemCaption" id="menuControlPage_TITLE" href="#" onclick="MyFunction(event);"
-                    aria-haspopup="true">Status und
-                    Bedienung</a>
+                <a class="MainMenuItemCaption" id="menuControlPage_TITLE" href="#" onclick="onClickFunction(this);"
+                    aria-haspopup="true">Status und Bedienung</a>
                 <ul class="dropdown" id="menuControlPage_SUBMENU" aria-label="submenu">
-                    <li><a id="submenuDiagramListPage" href="#" onclick="MyFunction(event);"><img
-                                src="../ise/img/menuicons/submenuDiagramListPage.png"> Diagramme</a></li>
-                    <li><a id="submenuFavorites" href="#" onclick="MyFunction(event);"><img
+                    <li id="submenuDiagramListPage"><a href="#" onclick="onClickFunction(this);"><img
+                                src="../ise/img/menuicons/submenuDiagramListPage.png">
+                            Diagramme</a></li>
+                    <li id="submenuFavorites"><a href="#" onclick="onClickFunction(this);"><img
                                 src="../ise/img/menuicons/submenuFavorites.png">
                             Favoriten</a></li>
-                    <li><a id="submenuDevices" href="#" onclick="MyFunction(event);"><img
+                    <li id="submenuDevices"><a href="#" onclick="onClickFunction(this);"><img
                                 src="../ise/img/menuicons/submenuDevices.png"> Geräte</a></li>
-                    <li><a id="submenuFunction" href="#" onclick="MyFunction(event);"><img
+                    <li id="submenuFunction"><a href="#" onclick="onClickFunction(this);"><img
                                 src="../ise/img/menuicons/submenuFunction.png">
                             Gewerke</a></li>
-                    <li><a id="submenuPrograms" href="#" onclick="MyFunction(event);"><img
+                    <li id="submenuPrograms"><a href="#" onclick="onClickFunction(this);"><img
                                 src="../ise/img/menuicons/submenuPrograms.png">
                             Programme</a></li>
-                    <li><a id="submenuRooms" href="#" onclick="MyFunction(event);"><img
+                    <li id="submenuRooms"><a href="#" onclick="onClickFunction(this);"><img
                                 src="../ise/img/menuicons/submenuRooms.png"> Räume</a></li>
-                    <li><a id="submenuSysProtocol" href="#" onclick="MyFunction(event);"><img
+                    <li id="submenuSysProtocol"><a href="#" onclick="onClickFunction(this);"><img
                                 src="../ise/img/menuicons/submenuSysProtocol.png">
                             Systemprotokoll</a></li>
-                    <li><a id="submenuSysVar" href="#" onclick="MyFunction(event);"><img
+                    <li id="submenuSysVar"><a href="#" onclick="onClickFunction(this);"><img
                                 src="../ise/img/menuicons/submenuSysVar.png">
                             Systemvariablen</a></li>
                 </ul>
             </li>
             <li id="menuProgramsLinksPage">
                 <a class="MainMenuItemCaption" id="menuProgramsLinksPage_TITLE" href="#"
-                    onclick="MyFunction(event);">Programme und Verknüpfungen</a>
+                    onclick="onClickFunction(this);">Programme und Verknüpfungen</a>
                 <ul class="dropdown" id="menuProgramsLinksPage_SUBMENU" aria-label="submenu">
-                    <li><a id="submenuDirectLinks" href="#" onclick="MyFunction(event);"><img
+                    <li><a id="submenuDirectLinks"><a href="#" onclick="onClickFunction(this);"><img
                                 src="../ise/img/menuicons/submenuDirectLinks.png">
                             Direkte Verknüpfungen</a></li>
-                    <li><a id="submenuProgramsLinks" href="#" onclick="MyFunction(event);"><img
+                    <li><a id="submenuProgramsLinks"><a href="#" onclick="onClickFunction(this);"><img
                                 src="../ise/img/menuicons/submenuProgramsLinks.png">
                             Programme &amp; Zentralenverknüpfungen</a></li>
                 </ul>
             </li>
             <li id="menuSettingsPage">
                 <a class="MainMenuItemCaption" id="menuSettingsPage_TITLE" href="#"
-                    onclick="MyFunction(event);">Einstellungen</a>
+                    onclick="onClickFunction(this);">Einstellungen</a>
                 <ul class="dropdown" id="menuSettingsPage_SUBMENU" aria-label="submenu">
-                    <li><a id="submenuUserManagement" href="#" onclick="MyFunction(event);"><img
-                                src="../ise/img/menuicons/submenuUserManagement.png"> Benutzerverwaltung</a></li>
-                    <li><a id="submenuCreateDiagram" href="#" onclick="MyFunction(event);"><img
+                    <li id="submenuUserManagement"><a href="#" onclick="onClickFunction(this);"><img
+                                src="../ise/img/menuicons/submenuUserManagement.png">
+                            Benutzerverwaltung</a></li>
+                    <li id="submenuCreateDiagram"><a href="#" onclick="onClickFunction(this);"><img
                                 src="../ise/img/menuicons/submenuCreateDiagram.png">
                             Diagramme</a></li>
-                    <li><a id="submenuFavorites" href="#" onclick="MyFunction(event);"><img
+                    <li id="submenuFavorites"><a href="#" onclick="onClickFunction(this);"><img
                                 src="../ise/img/menuicons/submenuFavorites.png">
                             Favoriten</a></li>
-                    <li><a id="submenuDevices" href="#" onclick="MyFunction(event);"><img
-                                src="../ise/img/menuicons/submenuDevices.png"> Geräte</a></li>
-                    <li><a id="submenuDeviceFirmwareInformation" href="#" onclick="MyFunction(event);"><img
-                                src="../ise/img/menuicons/submenuDeviceFirmwareInformation.png"> Geräte-Firmware -
-                            Übersicht</a></li>
-                    <li><a id="submenuDeviceInbox" href="#" onclick="MyFunction(event);"><img
+                    <li id="submenuDevices"><a href="#" onclick="onClickFunction(this);"><img
+                                src="../ise/img/menuicons/submenuDevices.png">
+                            Geräte</a></li>
+                    <li id="submenuDeviceFirmwareInformation"><a href="#" onclick="onClickFunction(this);"><img
+                                src="../ise/img/menuicons/submenuDeviceFirmwareInformation.png">
+                            Geräte-Firmware - Übersicht</a></li>
+                    <li id="submenuDeviceInbox"><a href="#" onclick="onClickFunction(this);"><img
                                 src="../ise/img/menuicons/submenuDeviceInbox.png">
                             Geräte - Posteingang</a></li>
-                    <li><a id="submenuFunction" href="#" onclick="MyFunction(event);"><img
+                    <li id="submenuFunction"><a href="#" onclick="onClickFunction(this);"><img
                                 src="../ise/img/menuicons/submenuFunction.png">
                             Gewerke</a></li>
-                    <li><a id="submenuCreateGroups" href="#" onclick="MyFunction(event);"><img
+                    <li id="submenuCreateGroups"><a href="#" onclick="onClickFunction(this);"><img
                                 src="../ise/img/menuicons/submenuCreateGroups.png">
                             Gruppen</a></li>
-                    <li><a id="submenuRooms" href="#" onclick="MyFunction(event);"><img
-                                src="../ise/img/menuicons/submenuRooms.png"> Räume</a></li>
-                    <li><a id="submenuSysControl" href="#" onclick="MyFunction(event);"><img
+                    <li id="submenuRooms"><a href="#" onclick="onClickFunction(this);"><img
+                                src="../ise/img/menuicons/submenuRooms.png">
+                            Räume</a></li>
+                    <li id="submenuSysControl"><a href="#" onclick="onClickFunction(this);"><img
                                 src="../ise/img/menuicons/submenuSysControl.png">
                             Systemsteuerung</a></li>
-                    <li><a id="submenuSysVar" href="#" onclick="MyFunction(event);"><img
+                    <li id="submenuSysVar"><a href="#" onclick="onClickFunction(this);"><img
                                 src="../ise/img/menuicons/submenuSysVar.png">
                             Systemvariablen</a></li>
                 </ul>
             </li>
             <li class="float-right me-10" id="menuHelpPage">
-                <a class="MainMenuItemCaption" id="menuHelpPage_TITLE" href="#" onclick="MyFunction(event);">Hilfe</a>
+                <a class="MainMenuItemCaption" id="menuHelpPage_TITLE" href="#"
+                    onclick="onClickFunction(this);">Hilfe</a>
             </li>
             <li class="float-right" id="menuNewDevicesPage">
                 <a class="MainMenuItemCaption" id="menuNewDevicesPage_TITLE" href="#"
-                    onclick="MyFunction(event);">Geräte
-                    anlernen</a>
+                    onclick="onClickFunction(this);">Geräte anlernen</a>
             </li>
         </ul>
     </nav>
 
     <script type="text/javascript">
-        MyFunction = function (e) {
-            alert(`You clicked <${e.target.id}>`);
+        onClickFunction = function (e) {
+            var id = e.id == "" ? e.parentElement.id : e.id;
+            alert(`You clicked <${id}>`);
             window.location.href = 'index.html'
             return true;
         }
