@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RaspberryMatic WebUI</title>
+
+    <link rel="shortcut icon" href="/ise/img/rm-favicon.ico" type="image/vnd.microsoft.icon">
+    <link rel="icon" href="/ise/img/rm-favicon.ico" type="image/vnd.microsoft.icon">
+
+    <style>
+        :root {
+            --btnGradient: linear-gradient(to bottom, #ffffff, #a1a1a1);
+        }
+
+        html,
+        body {
+            width: 100vw;
+            height: 100vh;
+            min-width: 780px;
+            /* new */
+            margin: 0;
+            padding: 0;
+            font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+            font-size: 12px;
+        }
+
+        #header {
+            height: 72px;
+            color: black;
+            background-color: #192c6e;
+        }
+
+        #menubar {
+            height: 34px;
+            padding-top: 2px;
+            border-bottom: solid 5px #bcc7cb;
+            background-color: #192c6e;
+        }
+
+        #menubar .float-right {
+            float: right;
+        }
+
+        #menubar .me-10 {
+            margin-right: 10px;
+        }
+
+        #menubar .MainMenuItemCaption {
+            padding: 5px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            background-image: var(--btnGradient);
+        }
+
+        #menubar a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        #menubar a>img {
+            width: 16px;
+            vertical-align: middle;
+        }
+
+        #menubar ul {
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+            font-weight: bold;
+            background: #192c6e;
+        }
+
+        #menubar li {
+            display: block;
+            float: left;
+            position: relative;
+            padding: 6px 0 5px 5px;
+            text-decoration: none;
+            transition-duration: 0.5s;
+        }
+
+        #menubar li:hover,
+        #menubar li:focus-within {
+            cursor: pointer;
+        }
+
+        #menubar li:focus-within a {
+            outline: none;
+        }
+
+        #menubar ul li ul {
+            display: none;
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            min-width: 5rem;
+            margin-top: 6px;
+            margin-left: 5px;
+            overflow: hidden;
+            z-index: 189;
+            transition: all 0.5s ease;
+            border: 1px solid #000;
+            background: #ebf1f2;
+        }
+
+        #menubar ul li:hover>ul,
+        #menubar ul li:focus-within>ul,
+        #menubar ul li ul:hover,
+        #menubar ul li ul:focus {
+            display: block;
+            visibility: visible;
+            opacity: 1;
+        }
+
+        #menubar ul li ul li {
+            clear: both;
+            width: 100%;
+            padding: 2px 5px;
+            line-height: 20px;
+            white-space: nowrap;
+        }
+
+        #menubar ul li ul li:hover,
+        #menubar ul li ul li:focus-within {
+            background: #bcc7cb;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header"></header>
+    <nav id="menubar" role="navigation">
+        <ul>
+            <li id="menuStartPage">
+                <a class="MainMenuItemCaption" id="menuStartPage_TITLE" href="#"
+                    onclick="MyFunction(event);">Startseite</a>
+            </li>
+            <li id="menuControlPage">
+                <a class="MainMenuItemCaption" id="menuControlPage_TITLE" href="#" onclick="MyFunction(event);"
+                    aria-haspopup="true">Status und
+                    Bedienung</a>
+                <ul class="dropdown" id="menuControlPage_SUBMENU" aria-label="submenu">
+                    <li><a id="submenuDiagramListPage" href="#" onclick="MyFunction(event);"><img
+                                src="../ise/img/menuicons/submenuDiagramListPage.png"> Diagramme</a></li>
+                    <li><a id="submenuFavorites" href="#" onclick="MyFunction(event);"><img
+                                src="../ise/img/menuicons/submenuFavorites.png">
+                            Favoriten</a></li>
+                    <li><a id="submenuDevices" href="#" onclick="MyFunction(event);"><img
+                                src="../ise/img/menuicons/submenuDevices.png"> Geräte</a></li>
+                    <li><a id="submenuFunction" href="#" onclick="MyFunction(event);"><img
+                                src="../ise/img/menuicons/submenuFunction.png">
+                            Gewerke</a></li>
+                    <li><a id="submenuPrograms" href="#" onclick="MyFunction(event);"><img
+                                src="../ise/img/menuicons/submenuPrograms.png">
+                            Programme</a></li>
+                    <li><a id="submenuRooms" href="#" onclick="MyFunction(event);"><img
+                                src="../ise/img/menuicons/submenuRooms.png"> Räume</a></li>
+                    <li><a id="submenuSysProtocol" href="#" onclick="MyFunction(event);"><img
+                                src="../ise/img/menuicons/submenuSysProtocol.png">
+                            Systemprotokoll</a></li>
+                    <li><a id="submenuSysVar" href="#" onclick="MyFunction(event);"><img
+                                src="../ise/img/menuicons/submenuSysVar.png">
+                            Systemvariablen</a></li>
+                </ul>
+            </li>
+            <li id="menuProgramsLinksPage">
+                <a class="MainMenuItemCaption" id="menuProgramsLinksPage_TITLE" href="#"
+                    onclick="MyFunction(event);">Programme und Verknüpfungen</a>
+                <ul class="dropdown" id="menuProgramsLinksPage_SUBMENU" aria-label="submenu">
+                    <li><a id="submenuDirectLinks" href="#" onclick="MyFunction(event);"><img
+                                src="../ise/img/menuicons/submenuDirectLinks.png">
+                            Direkte Verknüpfungen</a></li>
+                    <li><a id="submenuProgramsLinks" href="#" onclick="MyFunction(event);"><img
+                                src="../ise/img/menuicons/submenuProgramsLinks.png">
+                            Programme &amp; Zentralenverknüpfungen</a></li>
+                </ul>
+            </li>
+            <li id="menuSettingsPage">
+                <a class="MainMenuItemCaption" id="menuSettingsPage_TITLE" href="#"
+                    onclick="MyFunction(event);">Einstellungen</a>
+                <ul class="dropdown" id="menuSettingsPage_SUBMENU" aria-label="submenu">
+                    <li><a id="submenuUserManagement" href="#" onclick="MyFunction(event);"><img
+                                src="../ise/img/menuicons/submenuUserManagement.png"> Benutzerverwaltung</a></li>
+                    <li><a id="submenuCreateDiagram" href="#" onclick="MyFunction(event);"><img
+                                src="../ise/img/menuicons/submenuCreateDiagram.png">
+                            Diagramme</a></li>
+                    <li><a id="submenuFavorites" href="#" onclick="MyFunction(event);"><img
+                                src="../ise/img/menuicons/submenuFavorites.png">
+                            Favoriten</a></li>
+                    <li><a id="submenuDevices" href="#" onclick="MyFunction(event);"><img
+                                src="../ise/img/menuicons/submenuDevices.png"> Geräte</a></li>
+                    <li><a id="submenuDeviceFirmwareInformation" href="#" onclick="MyFunction(event);"><img
+                                src="../ise/img/menuicons/submenuDeviceFirmwareInformation.png"> Geräte-Firmware -
+                            Übersicht</a></li>
+                    <li><a id="submenuDeviceInbox" href="#" onclick="MyFunction(event);"><img
+                                src="../ise/img/menuicons/submenuDeviceInbox.png">
+                            Geräte - Posteingang</a></li>
+                    <li><a id="submenuFunction" href="#" onclick="MyFunction(event);"><img
+                                src="../ise/img/menuicons/submenuFunction.png">
+                            Gewerke</a></li>
+                    <li><a id="submenuCreateGroups" href="#" onclick="MyFunction(event);"><img
+                                src="../ise/img/menuicons/submenuCreateGroups.png">
+                            Gruppen</a></li>
+                    <li><a id="submenuRooms" href="#" onclick="MyFunction(event);"><img
+                                src="../ise/img/menuicons/submenuRooms.png"> Räume</a></li>
+                    <li><a id="submenuSysControl" href="#" onclick="MyFunction(event);"><img
+                                src="../ise/img/menuicons/submenuSysControl.png">
+                            Systemsteuerung</a></li>
+                    <li><a id="submenuSysVar" href="#" onclick="MyFunction(event);"><img
+                                src="../ise/img/menuicons/submenuSysVar.png">
+                            Systemvariablen</a></li>
+                </ul>
+            </li>
+            <li class="float-right me-10" id="menuHelpPage">
+                <a class="MainMenuItemCaption" id="menuHelpPage_TITLE" href="#" onclick="MyFunction(event);">Hilfe</a>
+            </li>
+            <li class="float-right" id="menuNewDevicesPage">
+                <a class="MainMenuItemCaption" id="menuNewDevicesPage_TITLE" href="#"
+                    onclick="MyFunction(event);">Geräte
+                    anlernen</a>
+            </li>
+        </ul>
+    </nav>
+
+    <script type="text/javascript">
+        MyFunction = function (e) {
+            alert(`You clicked <${e.target.id}>`);
+            window.location.href = 'index.html'
+            return true;
+        }
+    </script>
+</body>
+
+</html>
